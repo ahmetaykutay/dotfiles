@@ -1,6 +1,22 @@
 #!/bin/sh
 
-# install powerline fonts
+apt update && \
+	apt install -y --no-install-recommends \
+        exa \
+        bat \
+        ripgrep \
+        stow \
+        neovim \
+        tmux \
+        zsh \
+        git \
+        ca-certificates \
+        rsync \
+        unzip \
+    && rm -rf /var/lib/apt/lists/*
+
+mkdir -p ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins
+
 git clone https://github.com/powerline/fonts.git
 cd fonts
 ./install.sh
@@ -13,11 +29,6 @@ zsh -c 'git clone https://github.com/zdharma-continuum/fast-syntax-highlighting 
 zsh -c 'git clone https://github.com/marlonrichert/zsh-autocomplete ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autocomplete'
 zsh -c 'git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search'
 
-# install additional software packages using apt (keep it at minimum)
-sudo apt update && \
-	sudo apt install exa bat ripgrep stow -y
-
-# stow the config file from dotfiles into the container
 cd ~/dotfiles
 rm -rf .git
 
@@ -35,5 +46,4 @@ echo "export FZF_HOME=~/.fzf" >> ~/.zshrc
 echo "export PATH=\$FZF_HOME/bin:\$PATH" >> ~/.zshrc
 echo "[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh \n" >> ~/.zshrc
 
-# switch to zsh
 echo "zsh" >> ~/.bashrc
