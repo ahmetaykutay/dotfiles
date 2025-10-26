@@ -157,6 +157,31 @@ if ! grep -q 'export FZF_HOME=~/.fzf' "${USER_HOME}/.zshrc" 2>/dev/null; then
   info "Appended fzf configuration to ~/.zshrc"
 fi
 
+if ! command -v zoxide >/dev/null 2>&1; then
+    echo "zoxide not found. Installing..."
+
+    # Detect OS and install accordingly
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+        # macOS (Homebrew)
+        if command -v brew >/dev/null 2>&1; then
+            brew install zoxide
+        else
+            echo "Homebrew not found. Please install Homebrew first."
+            exit 1
+        fi
+    elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+        # Linux (curl + install script)
+        curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
+    else
+        echo "Unsupported OS. Please install zoxide manually."
+        exit 1
+    fi
+
+    echo "zoxide installed successfully."
+else
+    echo "zoxide is already installed."
+fi
+
 # --- set default shell to zsh ---
 if [ "$SHELL" != "$(command -v zsh)" ]; then
   if chsh -s "$(command -v zsh)" "$(whoami)" >/dev/null 2>&1; then
