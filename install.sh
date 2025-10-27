@@ -119,7 +119,7 @@ rm -v ~/.zshrc
 if [ -d "${DOTFILES_DIR}" ]; then
   (
     cd "${DOTFILES_DIR}"
-    for pkg in spackages; do
+    for pkg in "${spackages[@]}"; do
       if [ -d "${pkg}" ]; then
         stow -v -t "${USER_HOME}" "${pkg}" || warn "stow failed for ${pkg}"
       else
