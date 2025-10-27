@@ -167,14 +167,12 @@ if ! command -v zoxide >/dev/null 2>&1; then
             brew install zoxide
         else
             echo "Homebrew not found. Please install Homebrew first."
-            exit 1
         fi
     elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
         # Linux (curl + install script)
         curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
     else
         echo "Unsupported OS. Please install zoxide manually."
-        exit 1
     fi
 
     echo "zoxide installed successfully."
