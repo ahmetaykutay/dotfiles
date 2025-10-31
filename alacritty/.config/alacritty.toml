@@ -28,3 +28,6 @@ blue    = "0x8aadf4"
 magenta = "0xf5bde6"
 cyan    = "0x8bd5ca"
 white   = "0xa5adcb"
+
+[window]
+option_as_alt = "Both"
