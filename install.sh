@@ -110,6 +110,7 @@ spackages=(
     nvim
     tmux
     zsh
+    aerospace
 )
 if [ -f "${USER_HOME}/.zshrc" ] && [ ! -f "${USER_HOME}/.zshrc.bak" ]; then
   cp -v "${USER_HOME}/.zshrc" "${USER_HOME}/.zshrc.bak" || warn "Failed to backup existing .zshrc"
