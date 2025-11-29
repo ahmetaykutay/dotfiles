@@ -31,3 +31,4 @@ white   = "0xa5adcb"
 
 [window]
 option_as_alt = "Both"
+decorations = "none"

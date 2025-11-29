@@ -64,7 +64,7 @@ automatically-unhide-macos-hidden-apps = false
     outer.top =        0
     outer.right =      0
 
-# 'main' binding mode declaration
+#
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 # 'main' binding mode must be always presented
 # Fallback value (if you omit the key): mode.main.binding = {}
@@ -129,6 +129,9 @@ automatically-unhide-macos-hidden-apps = false
     alt-7 = 'workspace 7'
     alt-8 = 'workspace 8'
     alt-9 = 'workspace 9'
+    alt-b = 'workspace b'
+    alt-t = 'workspace t'
+    alt-m = 'workspace m'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
     alt-shift-1 = 'move-node-to-workspace 1'
@@ -170,13 +173,13 @@ automatically-unhide-macos-hidden-apps = false
     shift-down = ['volume set 0', 'mode main']
 
 [[on-window-detected]]
-if.app-id = 'com.googlecode.iterm2'
-run = 'move-node-to-workspace 3'
+if.app-id = 'org.alacritty'
+run = 'move-node-to-workspace t'
 
 [[on-window-detected]]
 if.app-id = 'com.brave.Browser'
-run = 'move-node-to-workspace 2'
+run = 'move-node-to-workspace b'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.mail'
-run = 'move-node-to-workspace 4'
+run = 'move-node-to-workspace m'
