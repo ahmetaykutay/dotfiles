@@ -10,11 +10,14 @@ vim.keymap.set("n", "<leader>Q", ":q<cr>")
 vim.keymap.set("n", "<leader>q", ":bw<cr>")
 
 vim.keymap.set("n", "<leader>fp", ":Prettier<cr>")
-vim.keymap.set("n", "<Leader>fo", ":lua vim.lsp.buf.format({formatting_options = { tabSize = 4, insertSpaces = true }})<CR>")
+vim.keymap.set("n", "<Leader>fo",
+    ":lua vim.lsp.buf.format({formatting_options = { tabSize = 4, insertSpaces = true }})<CR>")
 
-vim.keymap.set("n", "<leader>i",':lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})<CR>')
+vim.keymap.set("n", "<leader>i", ':lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})<CR>')
 
-vim.api.nvim_set_keymap('n', '<leader>z', "<cmd>lua require'centerpad'.toggle{ leftpad = 30, rightpad = 20 }<cr>", { silent = true, noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>z', "<cmd>lua require'centerpad'.toggle{ leftpad = 30, rightpad = 20 }<cr>",
+    { silent = true, noremap = true })
 
 vim.keymap.set("n", "g.", ":FzfLua lsp_code_actions<cr>")
 vim.keymap.set("x", "<leader>p", "\"_dp")
+

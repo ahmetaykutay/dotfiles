@@ -158,8 +158,6 @@ export PHP_INI_SCAN_DIR="$HOME/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
 
 export PATH="$HOME/.config/composer/vendor/bin:$PATH"
 
-bindkey -v
-
 source <(fzf --zsh)
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
