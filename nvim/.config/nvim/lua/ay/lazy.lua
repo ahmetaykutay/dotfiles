@@ -14,7 +14,8 @@ vim.g.mapleader = " "
 
 local plugins = {
     {
-        'nvim-telescope/telescope.nvim', version = '0.1.4',
+        'nvim-telescope/telescope.nvim',
+        version = '0.1.4',
         -- or                            , branch = '0.1.x',
         dependencies = { { 'nvim-lua/plenary.nvim' } }
     },
@@ -45,7 +46,8 @@ local plugins = {
                         if name:find("goto") == 1 then
                             move[name] = function(q, ...)
                                 if vim.wo.diff then
-                                    local config = configs.get_module("textobjects.move")[name] ---@type table<string,string>
+                                    local config = configs.get_module("textobjects.move")
+                                        [name] ---@type table<string,string>
                                     for key, query in pairs(config or {}) do
                                         if q == query and key:find("[%]%[][cC]") then
                                             vim.cmd("normal! " .. key)
@@ -63,7 +65,7 @@ local plugins = {
         cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
         keys = {
             { "<c-space>", desc = "Increment Selection" },
-            { "<bs>", desc = "Decrement Selection", mode = "x" },
+            { "<bs>",      desc = "Decrement Selection", mode = "x" },
         },
         ---@type TSConfig
         ---@diagnostic disable-next-line: missing-fields
@@ -134,7 +136,7 @@ local plugins = {
     'theprimeagen/harpoon',
     'mbbill/undotree',
 
-    { 'VonHeikemen/lsp-zero.nvim', branch = 'v3.x' },
+    { 'VonHeikemen/lsp-zero.nvim',        branch = 'v3.x' },
     { 'williamboman/mason.nvim' },
     { 'williamboman/mason-lspconfig.nvim' },
     { 'neovim/nvim-lspconfig' },
@@ -189,8 +191,27 @@ local plugins = {
     { 'christoomey/vim-tmux-navigator' },
 
     {
-        'weilbith/nvim-code-action-menu',
-        cmd = 'CodeActionMenu',
+        "ibhagwan/fzf-lua",
+        -- optional for icon support
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        -- or if using mini.icons/mini.nvim
+        -- dependencies = { "nvim-mini/mini.icons" },
+        ---@module "fzf-lua"
+        ---@type fzf-lua.Config|{}
+        ---@diagnostics disable: missing-fields
+        opts = {},
+        -- ** NEW CONFIGURATION HERE **
+        config = function()
+            local fzf = require("fzf-lua")
+
+            -- This function registers fzf-lua to take over Neovim's default
+            -- selection prompt (vim.ui.select), which LSP code actions use.
+            fzf.register_ui_select()
+
+            -- Optional: Add any specific setup options for fzf-lua here
+            fzf.setup({})
+        end
+        ---@diagnostics enable: missing-fields
     },
 
     'm4xshen/autoclose.nvim',
