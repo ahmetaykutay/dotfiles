@@ -32,9 +32,11 @@ local function toggle_terminal()
     end
 end
 
-vim.api.nvim_create_user_command('ToggleTerminal', function()
+-- vim.api.nvim_create_user_command('ToggleTerminal', toggle_terminal)
+vim.api.nvim_create_user_command("ToggleTerminal", function()
     toggle_terminal()
 end, {})
 
-vim.keymap.set("n", "<leader>t", toggle_terminal)
-vim.keymap.set('t', '<Esc>', '<C-\\><C-n>:ToggleTerminal<CR>', { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>t", ":ToggleTerminal<CR>")
+vim.keymap.set("t", "<leader>t", ":ToggleTerminal<CR>")
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { noremap = true, silent = true })
