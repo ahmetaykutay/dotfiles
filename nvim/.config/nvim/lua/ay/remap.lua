@@ -20,7 +20,7 @@ vim.keymap.set("x", "<leader>p", "\"_dp")
 
 vim.keymap.set('n', '<leader><F5>', vim.cmd.UndotreeToggle)
 
-vim.keymap.set('n', '<leader>e', ':Explore<CR>')
+vim.keymap.set('n', '<leader>e', ':Oil<CR>')
 vim.keymap.set('n', '<C-p>', ':bp<CR>')
 
 vim.keymap.set('n', '!', ':! ')
