@@ -1,15 +1,12 @@
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 
-vim.keymap.set("x", "<leader>p", "\"_dp")
-
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 vim.keymap.set("n", "<leader>w", ":w<cr>")
 vim.keymap.set("n", "<leader>Q", ":q<cr>")
 vim.keymap.set("n", "<leader>q", ":bw<cr>")
 
-vim.keymap.set("n", "<leader>fp", ":Prettier<cr>")
 vim.keymap.set("n", "<Leader>fo",
     ":lua vim.lsp.buf.format({formatting_options = { tabSize = 4, insertSpaces = true }})<CR>")
 
@@ -21,3 +18,9 @@ vim.api.nvim_set_keymap('n', '<leader>z', "<cmd>lua require'centerpad'.toggle{ l
 vim.keymap.set("n", "g.", ":FzfLua lsp_code_actions<cr>")
 vim.keymap.set("x", "<leader>p", "\"_dp")
 
+vim.keymap.set('n', '<leader><F5>', vim.cmd.UndotreeToggle)
+
+vim.keymap.set('n', '<leader>e', ':Explore<CR>')
+vim.keymap.set('n', '<C-p>', ':bp<CR>')
+
+vim.keymap.set('n', '!', ':! ')

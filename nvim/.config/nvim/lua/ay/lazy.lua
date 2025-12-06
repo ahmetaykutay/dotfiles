@@ -14,10 +14,9 @@ vim.g.mapleader = " "
 
 local plugins = {
     {
-        'nvim-telescope/telescope.nvim',
-        version = '0.1.4',
-        -- or                            , branch = '0.1.x',
-        dependencies = { { 'nvim-lua/plenary.nvim' } }
+        "ThePrimeagen/harpoon",
+        branch = "harpoon2",
+        dependencies = { "nvim-lua/plenary.nvim" }
     },
 
     {
@@ -133,7 +132,7 @@ local plugins = {
         end,
     },
 
-    'theprimeagen/harpoon',
+    -- 'theprimeagen/harpoon',
     'mbbill/undotree',
 
     { 'VonHeikemen/lsp-zero.nvim',        branch = 'v3.x' },
@@ -163,11 +162,6 @@ local plugins = {
         config = function()
             require('gitsigns').setup()
         end
-    },
-
-    {
-        "nvim-telescope/telescope-file-browser.nvim",
-        dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
     },
 
     {

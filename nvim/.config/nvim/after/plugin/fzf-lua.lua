@@ -1,0 +1,15 @@
+local fzf = require('fzf-lua')
+
+local map = vim.keymap.set
+
+local function get_current_dir()
+    return vim.fn.expand('%:p:h')
+end
+
+map('n', '<leader>ff', function()
+    fzf.files({ hidden = true })
+end, { desc = "Fzf-lua Find Files (with hidden)" })
+map('n', '<leader>fg', fzf.live_grep, { desc = "Fzf-lua Live Grep (Full project search)" })
+map('n', '<leader>fb', fzf.buffers, { desc = "Fzf-lua Buffers" })
+map('n', '<leader>fh', fzf.help_tags, { desc = "Fzf-lua Help Tags" })
+map('n', '<leader>fp', fzf.git_files, { desc = "Fzf-lua Git Files" })
