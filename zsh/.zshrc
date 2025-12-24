@@ -151,6 +151,7 @@ esac
 
 alias py="python3"
 alias k="kubectl"
+alias v="nvim"
 alias zed="open -a /Applications/Zed.app -n"
 
 export PATH="$HOME/.config/herd-lite/bin:$PATH"
