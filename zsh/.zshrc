@@ -167,3 +167,6 @@ eval "$(zoxide init --cmd cd zsh)"
 
 alias x86="$env /usr/bin/arch -x86_64 /bin/zsh ---login"
 alias arm="$env /usr/bin/arch -arm64 /bin/zsh ---login"
+
+export EDITOR='nvim'
+export VISUAL='nvim'
