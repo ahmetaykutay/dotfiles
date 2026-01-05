@@ -154,6 +154,7 @@ alias k="kubectl"
 alias v="nvim"
 alias zed="open -a /Applications/Zed.app -n"
 alias lg="lazygit"
+alias y="yazi"
 
 export PATH="$HOME/.config/herd-lite/bin:$PATH"
 export PHP_INI_SCAN_DIR="$HOME/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
@@ -171,3 +172,11 @@ alias arm="$env /usr/bin/arch -arm64 /bin/zsh ---login"
 
 export EDITOR='nvim'
 export VISUAL='nvim'
+
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	command yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}
