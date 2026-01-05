@@ -153,6 +153,7 @@ alias py="python3"
 alias k="kubectl"
 alias v="nvim"
 alias zed="open -a /Applications/Zed.app -n"
+alias lg="lazygit"
 
 export PATH="$HOME/.config/herd-lite/bin:$PATH"
 export PHP_INI_SCAN_DIR="$HOME/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
