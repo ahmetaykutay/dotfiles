@@ -173,6 +173,8 @@ alias arm="$env /usr/bin/arch -arm64 /bin/zsh ---login"
 export EDITOR='nvim'
 export VISUAL='nvim'
 
+export PATH="/opt/homebrew/bin:$PATH"
+
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
 	command yazi "$@" --cwd-file="$tmp"
