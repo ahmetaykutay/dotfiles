@@ -165,6 +165,8 @@ source <(fzf --zsh)
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+export FZF_DEFAULT_OPTS="--preview 'bat --style=numbers --color=always --line-range :500 {}'"
+
 eval "$(zoxide init --cmd cd zsh)"
 
 alias x86="$env /usr/bin/arch -x86_64 /bin/zsh ---login"
