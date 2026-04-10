@@ -1,5 +1,14 @@
 local fzf = require('fzf-lua')
 
+fzf.setup({
+  files = {
+    fd_opts = "--type f --hidden --no-ignore",
+  },
+  grep = {
+    rg_opts = "--column --line-number --no-heading --color=always --smart-case --hidden --no-ignore",
+  }
+})
+
 local map = vim.keymap.set
 
 local function get_current_dir()
