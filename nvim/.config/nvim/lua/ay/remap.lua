@@ -24,3 +24,7 @@ vim.keymap.set('n', '<leader>e', ':Oil<CR>')
 vim.keymap.set('n', '<C-p>', ':bp<CR>')
 
 vim.keymap.set('n', '!', ':! ')
+
+vim.keymap.set('n', '<leader>cp', function()
+  vim.fn.setreg('+', vim.fn.expand('%:p'))
+end)
