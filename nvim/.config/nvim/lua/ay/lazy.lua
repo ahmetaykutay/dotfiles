@@ -78,7 +78,6 @@ local plugins = {
                 "javascript",
                 "jsdoc",
                 "json",
-                "jsonc",
                 "lua",
                 "luadoc",
                 "luap",
