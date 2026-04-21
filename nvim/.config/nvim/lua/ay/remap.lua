@@ -7,8 +7,7 @@ vim.keymap.set("n", "<leader>w", ":w<cr>")
 vim.keymap.set("n", "<leader>Q", ":q<cr>")
 vim.keymap.set("n", "<leader>q", ":bw<cr>")
 
-vim.keymap.set("n", "<Leader>fo",
-    ":lua vim.lsp.buf.format({formatting_options = { tabSize = 4, insertSpaces = true }})<CR>")
+vim.keymap.set("n", "<Leader>fo", ":lua vim.lsp.buf.format()<CR>")
 
 vim.keymap.set("n", "<leader>i", ':lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})<CR>')
 
