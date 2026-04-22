@@ -27,3 +27,7 @@ vim.keymap.set('n', '!', ':! ')
 vim.keymap.set('n', '<leader>cp', function()
   vim.fn.setreg('+', vim.fn.expand('%:p'))
 end)
+
+vim.keymap.set("n", "<leader>fp", function()
+  print(vim.fn.expand("%:."))
+end, { desc = "Show file path relative to cwd" })
