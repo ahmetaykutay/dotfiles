@@ -17,8 +17,6 @@ vim.api.nvim_set_keymap('n', '<leader>z', "<cmd>lua require'centerpad'.toggle{ l
 vim.keymap.set("n", "g.", ":FzfLua lsp_code_actions<cr>")
 vim.keymap.set("x", "<leader>p", "\"_dp")
 
-vim.keymap.set('n', '<leader><F5>', vim.cmd.UndotreeToggle)
-
 vim.keymap.set('n', '<leader>e', ':Oil<CR>')
 vim.keymap.set('n', '<C-p>', ':bp<CR>')
 
