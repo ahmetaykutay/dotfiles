@@ -29,3 +29,19 @@ end)
 vim.keymap.set("n", "<leader>fp", function()
   print(vim.fn.expand("%:."))
 end, { desc = "Show file path relative to cwd" })
+
+vim.keymap.set("n", "<leader>r", function()
+  local word = vim.fn.expand("<cword>")
+  local cmd = ":%s/\\<" .. word .. "\\>//gI"
+  local keys = cmd .. string.rep(vim.api.nvim_replace_termcodes("<Left>", true, false, true), 3)
+  vim.api.nvim_feedkeys(keys, "n", false)
+end)
+
+vim.keymap.set("v", "<leader>r", function()
+  vim.cmd('noau normal! "vy')
+  local text = vim.fn.getreg("v")
+  local escaped_text = vim.fn.escape(text, "\\/.*$^~[]")
+  local cmd = ":%s/" .. escaped_text .. "//gI"
+  local keys = cmd .. string.rep(vim.api.nvim_replace_termcodes("<Left>", true, false, true), 3)
+  vim.api.nvim_feedkeys(keys, "n", false)
+end)
