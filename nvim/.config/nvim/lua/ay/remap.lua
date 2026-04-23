@@ -45,3 +45,10 @@ vim.keymap.set("v", "<leader>r", function()
   local keys = cmd .. string.rep(vim.api.nvim_replace_termcodes("<Left>", true, false, true), 3)
   vim.api.nvim_feedkeys(keys, "n", false)
 end)
+
+vim.keymap.set("n", "<leader>bs", function()
+  vim.cmd("enew")
+  vim.bo.buftype = "nofile"
+  vim.bo.bufhidden = "hide"
+  vim.bo.swapfile = false
+end, { desc = "Scratch Buffer" })
