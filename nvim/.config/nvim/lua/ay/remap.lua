@@ -64,3 +64,7 @@ map("n", "<leader>vws", function()
 end)
 
 map("i", "<C-k>", vim.lsp.buf.signature_help, { buffer = bufnr })
+
+map("n", "<leader>co", ":copen<CR>")
+map("n", "<leader>cc", ":cclose<CR>")
+

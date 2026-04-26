@@ -11,7 +11,8 @@ vim.cmd.colorscheme("catppuccin-macchiato")
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "qf",
 	callback = function()
-		vim.keymap.set("n", "<CR>", "<CR>:cclose<CR>", { buffer = true, silent = true })
+    vim.opt_local.cursorline = true
+    vim.keymap.set("n", "<CR>", "<CR>", { buffer = true, remap = true })
 	end,
 })
 
