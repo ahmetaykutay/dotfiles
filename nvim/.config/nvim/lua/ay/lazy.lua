@@ -19,7 +19,7 @@ local plugins = {
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
 	"mbbill/undotree",
-	{ "neovim/nvim-lspconfig" },
+	{ "neovim/nvim-lspconfig", ops = {} },
 	{
 		"mason-org/mason-lspconfig.nvim",
 		opts = {},
@@ -27,7 +27,7 @@ local plugins = {
 			{ "mason-org/mason.nvim", opts = {} },
 		},
 	},
-	{ "nvim-lualine/lualine.nvim" },
+	{ "nvim-lualine/lualine.nvim", opts = {} },
 	{
 		"lewis6991/gitsigns.nvim",
 		config = function()
@@ -42,7 +42,21 @@ local plugins = {
 		config = function()
 			local fzf = require("fzf-lua")
 			fzf.register_ui_select()
-			fzf.setup({})
+			fzf.setup({
+				files = { fd_opts = "--type f --hidden --no-ignore" },
+				grep = {
+					rg_opts = "--column --line-number --no-heading --color=always --smart-case --hidden --no-ignore",
+				},
+			})
+			local map = vim.keymap.set
+
+			map("n", "<leader>ff", function()
+				fzf.files({ hidden = true })
+			end, { desc = "Fzf-lua Find Files (with hidden)" })
+			map("n", "<leader>fg", fzf.live_grep, { desc = "Fzf-lua Live Grep (Full project search)" })
+			map("n", "<leader>fb", fzf.buffers, { desc = "Fzf-lua Buffers" })
+			map("n", "<leader>fh", fzf.help_tags, { desc = "Fzf-lua Help Tags" })
+			map("n", "<leader>fp", fzf.git_files, { desc = "Fzf-lua Git Files" })
 		end,
 	},
 	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
