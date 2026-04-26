@@ -61,6 +61,6 @@ end, { desc = "Scratch Buffer" })
 -- Search for a symbol across your whole project using FZF
 map("n", "<leader>vws", function()
 	require("fzf-lua").lsp_live_workspace_symbols()
-end, opts)
+end)
 
 map("i", "<C-k>", vim.lsp.buf.signature_help, { buffer = bufnr })
