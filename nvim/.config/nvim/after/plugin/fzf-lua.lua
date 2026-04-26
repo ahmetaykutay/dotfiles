@@ -11,10 +11,6 @@ fzf.setup({
 
 local map = vim.keymap.set
 
-local function get_current_dir()
-    return vim.fn.expand('%:p:h')
-end
-
 map('n', '<leader>ff', function()
     fzf.files({ hidden = true })
 end, { desc = "Fzf-lua Find Files (with hidden)" })

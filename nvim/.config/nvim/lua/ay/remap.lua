@@ -14,7 +14,6 @@ vim.keymap.set("n", "<leader>i", ':lua vim.diagnostic.open_float(nil, {focus=fal
 vim.api.nvim_set_keymap('n', '<leader>z', "<cmd>lua require'centerpad'.toggle{ leftpad = 30, rightpad = 20 }<cr>",
     { silent = true, noremap = true })
 
-vim.keymap.set("n", "g.", ":FzfLua lsp_code_actions<cr>")
 vim.keymap.set("x", "<leader>p", "\"_dp")
 
 vim.keymap.set('n', '<leader>e', ':Oil<CR>')
@@ -52,3 +51,8 @@ vim.keymap.set("n", "<leader>bs", function()
   vim.bo.bufhidden = "hide"
   vim.bo.swapfile = false
 end, { desc = "Scratch Buffer" })
+
+-- Search for a symbol across your whole project using FZF
+vim.keymap.set('n', '<leader>vws', function() require('fzf-lua').lsp_live_workspace_symbols() end, opts)
+
+vim.keymap.set("i", "<C-k>", vim.lsp.buf.signature_help, { buffer = bufnr })
