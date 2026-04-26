@@ -96,6 +96,85 @@ local plugins = {
 			})
 		end,
 	},
+	{
+		"mfussenegger/nvim-dap",
+		event = { "BufReadPre", "BufNewFile" },
+
+		dependencies = {
+			"rcarriga/nvim-dap-ui",
+			"nvim-neotest/nvim-nio",
+			"jay-babu/mason-nvim-dap.nvim",
+			"theHamsta/nvim-dap-virtual-text",
+		},
+
+		config = function()
+			local dap = require("dap")
+			local dapui = require("dapui")
+
+			require("mason-nvim-dap").setup({
+				automatic_setup = true,
+				ensure_installed = { "js" },
+			})
+
+			dap.adapters["pwa-node"] = {
+				type = "server",
+				host = "localhost",
+				port = "${port}",
+				executable = {
+					command = "node",
+					args = {
+						vim.fn.stdpath("data") .. "/mason/packages/js-debug-adapter/js-debug/src/dapDebugServer.js",
+						"${port}",
+					},
+				},
+			}
+
+			dap.configurations.javascript = {
+				{
+					type = "pwa-node",
+					request = "launch",
+					name = "Launch file",
+					program = "${file}",
+					cwd = "${workspaceFolder}",
+				},
+			}
+
+			dap.configurations.typescript = {
+				{
+					type = "pwa-node",
+					request = "launch",
+					name = "Launch TS file",
+					program = "${file}",
+					cwd = "${workspaceFolder}",
+				},
+			}
+
+			dapui.setup()
+
+			dap.listeners.after.event_initialized["dapui"] = function()
+				dapui.open()
+			end
+
+			dap.listeners.before.event_terminated["dapui"] = function()
+				dapui.close()
+			end
+
+			dap.listeners.before.event_exited["dapui"] = function()
+				dapui.close()
+			end
+
+			vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint, { desc = "Breakpoint" })
+			vim.keymap.set("n", "<leader>dc", dap.continue, { desc = "Continue" })
+			vim.keymap.set("n", "<leader>dr", dap.repl.open, { desc = "REPL" })
+			vim.keymap.set("n", "<leader>dk", dap.terminate, { desc = "Kill" })
+			vim.keymap.set("n", "<leader>ds", dap.step_over, { desc = "Step Over" })
+			vim.keymap.set("n", "<leader>di", dap.step_into, { desc = "Step Into" })
+			vim.keymap.set("n", "<leader>do", dap.step_out, { desc = "Step Out" })
+			vim.keymap.set("n", "<leader>du", dapui.toggle, { desc = "DAP UI" })
+
+			require("nvim-dap-virtual-text").setup()
+		end,
+	},
 }
 
 require("lazy").setup(plugins, {
