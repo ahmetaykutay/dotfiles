@@ -31,7 +31,7 @@ map("n", "<leader>cp", function()
 	vim.fn.setreg("+", vim.fn.expand("%:."))
 end)
 
-map("n", "<leader>fp", function()
+map("n", "<leader>cP", function()
 	print(vim.fn.expand("%:."))
 end, { desc = "Show file path relative to cwd" })
 

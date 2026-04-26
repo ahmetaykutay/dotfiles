@@ -47,6 +47,11 @@ local plugins = {
 				grep = {
 					rg_opts = "--column --line-number --no-heading --color=always --smart-case --hidden --no-ignore",
 				},
+				keymap = {
+					fzf = {
+						["ctrl-q"] = "select-all+accept",
+					},
+				},
 			})
 			local map = vim.keymap.set
 
