@@ -9,7 +9,9 @@ map("n", "<leader>w", ":w<cr>")
 map("n", "<leader>Q", ":q<cr>")
 map("n", "<leader>q", ":bw<cr>")
 
-map("n", "<Leader>fo", ":lua vim.lsp.buf.format()<CR>")
+map("n", "<leader>fo", function()
+	require("conform").format({ async = true, lsp_fallback = true })
+end, { desc = "Format buffer" })
 
 map("n", "<leader>i", ':lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})<CR>')
 
@@ -67,4 +69,3 @@ map("i", "<C-k>", vim.lsp.buf.signature_help, { buffer = bufnr })
 
 map("n", "<leader>co", ":copen<CR>")
 map("n", "<leader>cc", ":cclose<CR>")
-

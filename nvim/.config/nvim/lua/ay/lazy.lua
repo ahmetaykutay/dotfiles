@@ -78,6 +78,24 @@ local plugins = {
 			require("tree-sitter-manager").setup({})
 		end,
 	},
+	{
+		"stevearc/conform.nvim",
+		opts = {},
+		config = function()
+			require("conform").setup({
+				format_on_save = {
+					timeout_ms = 500,
+					lsp_format = "fallback",
+				},
+				formatters_by_ft = {
+					lua = { "stylua" },
+					python = { "isort", "black" },
+					rust = { "rustfmt", lsp_format = "fallback" },
+					javascript = { "prettierd", "prettier", stop_after_first = true },
+				},
+			})
+		end,
+	},
 }
 
 require("lazy").setup(plugins, {
