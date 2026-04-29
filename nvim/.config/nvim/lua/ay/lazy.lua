@@ -198,6 +198,7 @@ local plugins = {
 			vim.keymap.set("n", "<leader>dr", dap.repl.open, { desc = "REPL" })
 			vim.keymap.set("n", "<leader>dk", dap.terminate, { desc = "Kill" })
 			vim.keymap.set("n", "<leader>ds", dap.step_over, { desc = "Step Over" })
+			vim.keymap.set("n", "<F5>", dap.step_over, { desc = "Step Over" })
 			vim.keymap.set("n", "<leader>di", dap.step_into, { desc = "Step Into" })
 			vim.keymap.set("n", "<leader>do", dap.step_out, { desc = "Step Out" })
 			vim.keymap.set("n", "<leader>du", dapui.toggle, { desc = "DAP UI" })
