@@ -19,12 +19,28 @@ local plugins = {
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
 	"mbbill/undotree",
-	{ "neovim/nvim-lspconfig", ops = {} },
+	{
+		"neovim/nvim-lspconfig",
+		config = function()
+			vim.lsp.enable("pyright")
+			vim.lsp.enable("ts_ls")
+			vim.lsp.enable("rust_analyzer")
+
+			local map = vim.keymap.set
+			map("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
+			map("n", "K", vim.lsp.buf.hover, { desc = "Hover" })
+			map("n", "gr", vim.lsp.buf.references, { desc = "References" })
+			map("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename" })
+		end,
+	},
+	{
+		"mason-org/mason.nvim",
+		opts = {},
+	},
 	{
 		"mason-org/mason-lspconfig.nvim",
-		opts = {},
-		dependencies = {
-			{ "mason-org/mason.nvim", opts = {} },
+		opts = {
+			ensure_installed = { "pyright", "ts_ls", "rust_analyzer" },
 		},
 	},
 	{ "nvim-lualine/lualine.nvim", opts = {} },
