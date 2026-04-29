@@ -153,6 +153,13 @@ local plugins = {
 					program = "${file}",
 					cwd = "${workspaceFolder}",
 				},
+				{
+					type = "pwa-node",
+					request = "attach",
+					name = "Attach to process",
+					processId = require("dap.utils").pick_process,
+					cwd = "${workspaceFolder}",
+				},
 			}
 
 			dap.configurations.typescript = {
@@ -161,6 +168,13 @@ local plugins = {
 					request = "launch",
 					name = "Launch TS file",
 					program = "${file}",
+					cwd = "${workspaceFolder}",
+				},
+				{
+					type = "pwa-node",
+					request = "attach",
+					name = "Attach to process",
+					processId = require("dap.utils").pick_process,
 					cwd = "${workspaceFolder}",
 				},
 			}
