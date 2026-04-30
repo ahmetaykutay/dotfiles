@@ -22,6 +22,16 @@ local plugins = {
 	{
 		"neovim/nvim-lspconfig",
 		config = function()
+			-- Configure ts_ls with increased memory limit via environment variable
+			vim.lsp.config.ts_ls = {
+				cmd_env = {
+					TSS_LOG = "-level verbose -file /tmp/tsserver.log",
+				},
+				init_options = {
+					maxTsServerMemory = 8192,
+				},
+			}
+
 			vim.lsp.enable("pyright")
 			vim.lsp.enable("ts_ls")
 			vim.lsp.enable("rust_analyzer")
@@ -163,6 +173,26 @@ local plugins = {
 			}
 
 			dap.configurations.typescript = {
+				{
+					type = "pwa-node",
+					request = "launch",
+					name = "Next.js: Debug Server",
+					runtimeExecutable = "yarn",
+					runtimeArgs = { "next", "dev" },
+					cwd = "${workspaceFolder}/app",
+					sourceMaps = true,
+					skipFiles = { "<node_internals>/**", "**/node_modules/**", "**/yarn/**" },
+					console = "integratedTerminal",
+				},
+				{
+					type = "pwa-node",
+					request = "attach",
+					name = "Attach to Next.js",
+					port = 9229,
+					cwd = "${workspaceFolder}/app",
+					sourceMaps = true,
+					skipFiles = { "<node_internals>/**", "**/node_modules/**", "**/yarn/**" },
+				},
 				{
 					type = "pwa-node",
 					request = "launch",
