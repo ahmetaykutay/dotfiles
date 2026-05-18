@@ -149,7 +149,7 @@ case ":$PATH:" in
 esac
 # pnpm end
 
-alias py="python"
+alias py="python3"
 alias k="kubectl"
 alias v="nvim"
 alias zed="open -a /Applications/Zed.app -n"
