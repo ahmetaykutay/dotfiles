@@ -192,3 +192,8 @@ export LC_ALL="en_US.UTF-8"
 bindkey -v
 
 [[ -f ~/.work.zshrc ]] && source ~/.work.zshrc
+
+# fzf configuration
+export FZF_HOME=~/.fzf
+export PATH="$FZF_HOME/bin:$PATH"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
