@@ -197,3 +197,4 @@ bindkey -v
 export FZF_HOME=~/.fzf
 export PATH="$FZF_HOME/bin:$PATH"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export PATH="/opt/homebrew/bin:$PATH"
