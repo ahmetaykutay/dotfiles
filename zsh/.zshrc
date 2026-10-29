@@ -175,6 +175,7 @@ alias arm="$env /usr/bin/arch -arm64 /bin/zsh ---login"
 
 export EDITOR='nvim'
 export VISUAL='nvim'
+alias -s txt='nvim'
 
 export PATH="/opt/homebrew/bin:$PATH"
 

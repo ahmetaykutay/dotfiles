@@ -26,9 +26,45 @@ palette = 14=#8bd5ca
 palette = 15=#a5adcb
 
 macos-option-as-alt = true
-window-decoration = false
+macos-titlebar-style = tabs
+window-decoration = auto
+macos-window-buttons = hidden
 window-padding-x = 0
 window-padding-y = 0
 
 font-feature = calt
 font-feature = liga
+
+# Vim-style pane navigation
+keybind = ctrl+h=goto_split:left
+keybind = ctrl+j=goto_split:down
+keybind = ctrl+k=goto_split:up
+keybind = ctrl+l=goto_split:right
+
+# Enter scrollback mode
+keybind = alt+v=activate_key_table:vim
+keybind = vim/
+
+# Navigate scrollback
+keybind = vim/j=scroll_page_lines:1
+keybind = vim/k=scroll_page_lines:-1
+keybind = vim/ctrl+f=scroll_page_down
+keybind = vim/ctrl+b=scroll_page_up
+keybind = vim/g>g=scroll_to_top
+keybind = vim/shift+g=scroll_to_bottom
+
+# Search
+keybind = vim/slash=start_search
+keybind = vim/n=navigate_search:next
+
+# Copy current selection (does not create one)
+keybind = vim/y=copy_to_clipboard
+
+# Exit mode
+keybind = vim/escape=deactivate_key_table
+keybind = vim/q=deactivate_key_table
+keybind = vim/i=deactivate_key_table
+keybind = vim/catch_all=ignore
+
+
+keybind = alt+e=write_screen_file:paste
